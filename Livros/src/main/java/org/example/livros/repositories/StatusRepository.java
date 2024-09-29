@@ -3,7 +3,7 @@ package org.example.livros.repositories;
 import org.example.livros.connection.ConnectionFactory;
 import org.example.livros.exceptions.DatabaseException;
 import org.example.livros.exceptions.DatabaseIntegrityException;
-import org.example.livros.models.Status;
+import org.example.livros.models.Autor;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ public class StatusRepository {
         connection = ConnectionFactory.getConnection();
     }
 
-    public List<Status> getAll(){
-        List<Status> statusArray= new ArrayList<>();
+    public List<Autor> getAll(){
+        List<Autor> statusArray= new ArrayList<>();
         String sql= "SELECT * FROM status";
 
 
@@ -26,7 +26,7 @@ public class StatusRepository {
             Statement statement =connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             while (result.next()){
-                Status status = new Status();
+                Autor status = new Autor();
                 status.setId(result.getInt("id"));
                 status.setName(result.getString("Name"));
                 statusArray.add(status);
@@ -60,9 +60,9 @@ public class StatusRepository {
 
 
 
-    public List<Status> getStatus() {
+    public List<Autor> getStatus() {
 
-        List<Status> statusArray = new ArrayList<>();
+        List<Autor> statusArray = new ArrayList<>();
 
         try {
 
@@ -71,7 +71,7 @@ public class StatusRepository {
 
             while (result.next()) {
 
-                Status status = instantiateStatus(result);
+                Autor status = instantiateStatus(result);
 
                 statusArray.add(status);
 
@@ -93,7 +93,7 @@ public class StatusRepository {
     }
 
 
-    public Status insert(Status status) {
+    public Autor insert(Autor status) {
 
         String sql = "INSERT INTO status (Name) VALUES(?)";
 
@@ -149,18 +149,18 @@ public class StatusRepository {
         }
     }
 
-    public Status instantiateStatus(ResultSet resultSet) throws SQLException {
+    public Autor instantiateStatus(ResultSet resultSet) throws SQLException {
 
-        Status status = new Status();
+        Autor status = new Autor();
 
         status.setId(resultSet.getInt("Id"));
         status.setName(resultSet.getString("Name"));
         return status;
     }
 
-    public Status getById(Integer id) {
+    public Autor getById(Integer id) {
 
-        Status status;
+        Autor status;
 
         String sql = "SELECT * FROM status WHERE id=?";
 

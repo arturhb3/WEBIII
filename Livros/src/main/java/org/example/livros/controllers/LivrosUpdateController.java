@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.livros.models.Livro;
-import org.example.livros.models.Status;
+import org.example.livros.models.Autor;
 import org.example.livros.repositories.LivroRepository;
 import org.example.livros.repositories.StatusRepository;
 
@@ -24,7 +24,7 @@ public class LivrosUpdateController extends HttpServlet {
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
        Integer id=Integer.valueOf(req.getParameter("id"));
-       List<Status> departments = departmentRepository.getAll();
+       List<Autor> departments = departmentRepository.getAll();
 
        req.setAttribute("departments", departments);
 
@@ -44,7 +44,7 @@ public class LivrosUpdateController extends HttpServlet {
         LocalDate birthDate = LocalDate.parse(req.getParameter("field_birthDate"));
         Integer departmentId= Integer.valueOf(req.getParameter("field_department"));
 
-        Status department = new Status();
+        Autor department = new Autor();
         department.setId(departmentId);
 
         Livro seller = new Livro();

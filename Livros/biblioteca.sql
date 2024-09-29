@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/09/2024 às 23:16
+-- Tempo de geração: 29/09/2024 às 01:56
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -40,8 +40,7 @@ CREATE TABLE `livro` (
 --
 
 INSERT INTO `livro` (`Id`, `Name`, `Autor`, `DataLancamento`, `StatusId`) VALUES
-(2, 'ARTUR HB', 'mike.wheeler333', '1979-12-31 00:00:00', 3),
-(8, 'PAI RICO PAI POBRE', 'Robert Kyosak', '1997-09-12 00:00:00', 1);
+(19, 'ASSIM QUE COMEÇA', 'EMPRESTADO', '2024-09-11 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -59,9 +58,16 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`Id`, `Name`) VALUES
-(1, 'Disponivel'),
-(2, 'Emprestado'),
-(3, 'Indisponivel');
+(1, 'William Shakespeare'),
+(2, 'Jane Austen'),
+(3, 'Mark Twain'),
+(4, 'Charles Dickens'),
+(5, 'Leo Tolstoy'),
+(6, 'Virginia Woolf'),
+(7, 'Gabriel García Márquez'),
+(8, 'George Orwell'),
+(9, 'Ernest Hemingway'),
+(10, 'J.K. Rowling');
 
 --
 -- Índices para tabelas despejadas
@@ -81,7 +87,7 @@ ALTER TABLE `livro`
 -- AUTO_INCREMENT de tabela `livro`
 --
 ALTER TABLE `livro`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

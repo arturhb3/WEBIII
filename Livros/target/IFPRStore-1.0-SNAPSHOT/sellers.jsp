@@ -4,6 +4,7 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="org.example.livros.models.Livro" %>
 <%@ page import="org.example.livros.util.DateUtils" %>
+<%@ page import="org.example.livros.models.Status" %>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% List<Livro> sellers =(List<Livro>) request.getAttribute("sellers");%>
@@ -108,14 +109,15 @@
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Autor</th>
-                        <th>Lançamento</th>
                         <th>Status</th>
+                        <th>Lançamento</th>
+                        <th>Autor</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
                     <%for(Livro seller: sellers){%>
+
                     <tr>
                         <td><%= seller.getId()%></td>
                         <td><%= seller.getName()%></td>

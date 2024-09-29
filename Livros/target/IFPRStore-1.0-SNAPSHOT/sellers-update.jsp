@@ -1,12 +1,13 @@
 
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.livros.models.Status" %>
+<%@ page import="org.example.livros.models.Autor" %>
 <%@ page import="org.example.livros.models.Livro" %>
+<%@ page import="org.example.livros.models.Status" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    List<Status> departments = (List<Status>) request. getAttribute("departments");
+    List<Autor> departments = (List<Autor>) request. getAttribute("departments");
     Livro seller = (Livro) request.getAttribute("seller");
 %>
 
@@ -123,8 +124,16 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Autor: </label>
-                    <input type="text" class="form-control" id="email" name="field_email" value="<%=seller.getAutor()%>" placeholder="nome@examplo.com">
+                    <label for="email" class="form-label">Status: </label>
+                    <select type="text" class="form-control" id="email" name="field_email" value="<%=seller.getAutor()%>" placeholder="nome@examplo.com">
+                        <option selected>Selecione um status...</option>
+                        <% for (Status status: Status.values()){%>
+                        <% String selected=(status.name().equals(seller.getAutor()))?"selected":""; %>
+                        <option <%= selected %> value="<%=status.getId()%>">
+                            <%= status.name()%>
+                        </option>;
+                        <%}%>
+                    </select>
                 </div>
 
                 <div class="mb-3">
@@ -134,10 +143,10 @@
 
 
                 <div class="mb-3">
-                    <label for="department" class="form-label">Status: </label>
+                    <label for="department" class="form-label">Autor: </label>
                     <select class="form-select" name="field_department" id="department">
-                        <option selected>Selecione um status...</option>
-                            <% for (Status department: departments){%>
+                        <option selected>Selecione um autor...</option>
+                            <% for (Autor department: departments){%>
                                 <% String selected=(seller.getStatus().getId() == department.getId())?"selected":""; %>
                                 <option <%= selected %> value="<%=department.getId()%>">
                                     <%= department.getName()%>

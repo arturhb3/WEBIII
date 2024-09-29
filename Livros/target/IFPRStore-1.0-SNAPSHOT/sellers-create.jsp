@@ -1,11 +1,12 @@
 
 <%@ page import="java.util.List" %>
 <%@ page import="org.example.livros.models.Livro" %>
+<%@ page import="org.example.livros.models.Autor" %>
 <%@ page import="org.example.livros.models.Status" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    List<Status> departments = (List<Status>) request. getAttribute("departments");
+    List<Autor> departments = (List<Autor>) request. getAttribute("departments");
     Livro seller = (Livro) request.getAttribute("seller");
 %>
 
@@ -113,8 +114,15 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Autor: </label>
-                    <input type="text" class="form-control" id="email" name="field_email" placeholder="nome">
+                    <label for="email" class="form-label">Status: </label>
+                    <select type="text" class="form-control" id="email" name="field_email" placeholder="nome">
+                        <option selected>Selecione um Status:</option>
+                        <% for (Status status: Status.values()){%>
+                        <option value="<%=status.getId()%>">
+                            <%= status.name()%>
+                        </option>;
+                        <%}%>
+                    </select>
                 </div>
 
                 <div class="mb-3">
@@ -124,10 +132,10 @@
 
 
                 <div class="mb-3">
-                    <label for="department" class="form-label">Status: </label>
+                    <label for="department" class="form-label">Autor: </label>
                     <select class="form-select" name="field_department" id="department">
                         <option selected>Selecione um status...</option>
-                        <% for (Status department: departments){%>
+                        <% for (Autor department: departments){%>
                         <option value="<%=department.getId()%>">
                             <%= department.getName()%>
                         </option>;

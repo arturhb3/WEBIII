@@ -8,7 +8,7 @@ public class Livro {
     private String name;
     private String autor;
     private LocalDate dataLancamento;
-    private Status status;
+    private Autor status;
 
     public Integer getId() {
         return Id;
@@ -22,15 +22,25 @@ public class Livro {
         return name.toUpperCase();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name;}
 
     public String getAutor() {
         return autor;
     }
 
     public void setAutor(String autor) {
+
+        if(autor.equals("1")){
+            autor="EMPRESTADO";
+        }
+        if(autor.equals("2")){
+            autor="DISPONIVEL";
+        }
+        if(autor.equals("3")){
+            autor="INDISPONIVEL";
+        }
+
+        autor = autor;
         this.autor = autor;
     }
 
@@ -43,11 +53,11 @@ public class Livro {
     }
 
 
-    public Status getStatus() {
+    public Autor getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Autor status) {
         this.status = status;
     }
 

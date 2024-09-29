@@ -5,7 +5,7 @@ package org.example.livros.repositories;
 import org.example.livros.connection.ConnectionFactory;
 import org.example.livros.exceptions.DatabaseException;
 import org.example.livros.models.Livro;
-import org.example.livros.models.Status;
+import org.example.livros.models.Autor;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class LivroRepository {
                                                           " ON livro.StatusId = status.id");
 
             while (result.next()) {
-                Status status = instantiateStatus(result);
+                Autor status = instantiateStatus(result);
                 Livro livro = instantiateLivro(result, status);
 
 
@@ -139,7 +139,7 @@ public class LivroRepository {
     public Livro getById(Integer id) {
 
         Livro livro;
-        Status status;
+        Autor status;
 
         String sql = "SELECT livro.*,status.Name as DepName " +
                 "FROM livro " +
@@ -174,7 +174,7 @@ public class LivroRepository {
         List<Livro> livrosArray = new ArrayList<>();
 
         Livro livro;
-        Status status;
+        Autor status;
 
         String sql = "SELECT livro.*,status.Name as DepName " +
                 "FROM livro INNER JOIN status " +
@@ -188,7 +188,7 @@ public class LivroRepository {
 
             ResultSet resultSet = statement.executeQuery();
 
-            Map<Integer, Status> map = new HashMap<>();
+            Map<Integer, Autor> map = new HashMap<>();
 
             while (resultSet.next()) {
 
@@ -214,7 +214,7 @@ public class LivroRepository {
 
     }
 
-    public Livro instantiateLivro(ResultSet resultSet, Status status) throws SQLException {
+    public Livro instantiateLivro(ResultSet resultSet, Autor status) throws SQLException {
 
         Livro livro = new Livro();
 
@@ -227,9 +227,9 @@ public class LivroRepository {
         return livro;
     }
 
-    public Status instantiateStatus(ResultSet resultSet) throws SQLException {
+    public Autor instantiateStatus(ResultSet resultSet) throws SQLException {
 
-        Status status = new Status();
+        Autor status = new Autor();
 
         status.setId(resultSet.getInt("StatusId"));
         status.setName(resultSet.getString("DepName"));

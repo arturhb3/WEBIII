@@ -1,31 +1,27 @@
 package org.example.livros.models;
 
-public class Status {
+public enum Status {
+    EMPRESTADO(1),
+    DISPONIVEL(2),
+    INDISPONIVEL(3);
+    private final int id;
 
-    private Integer id;
-    private String name;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    Status(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public static Status getById(int id) {
+        for (Status status : values()) {
+            if (status.getId() == id) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("ID inválido: " + id);
     }
 }
